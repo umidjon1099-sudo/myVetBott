@@ -41,14 +41,55 @@ newgrp docker
 
 ## 3. Loyihani serverga olib kelish
 
+### Parolsiz clone: SSH kalit (tavsiya)
+
+GitHub endi oddiy parolni qabul qilmaydi. Serverda bir marta SSH kalit yarating va GitHub ga qo‘shing — keyin parol kiritmasdan `git clone` / `git pull` ishlaydi.
+
+**3.1. VPS da SSH kalit yaratish**
+
 ```bash
-# Masalan: /home/deploy/my_vet_bot
+ssh-keygen -t ed25519 -C "vps-deploy" -f ~/.ssh/id_ed25519 -N ""
+```
+
+**3.2. Public kalitni ko‘rsatish (buni GitHub ga qo‘shasiz)**
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+Chiqgan qatorni to‘liq nusxalab oling (masalan `ssh-ed25519 AAAAC3... vps-deploy`).
+
+**3.3. GitHub da kalitni qo‘shish**
+
+- GitHub.com → o‘ng ustida profil rasmingiz → **Settings**
+- Chap menuda **SSH and GPG keys** → **New SSH key**
+- Title: `VPS my_vet_bot` (ixtiyoriy)
+- Key: yuqorida nusxalagan `id_ed25519.pub` matnini yopishtiring
+- **Add SSH key** bosing
+
+**3.4. Clone (SSH orqali — parol so‘ramaydi)**
+
+```bash
 cd /home/deploy   # yoki o‘zingiz tanlagan papka
-git clone https://github.com/YOUR_USERNAME/my_vet_bot.git
+git clone git@github.com:YOUR_USERNAME/my_vet_bot.git
 cd my_vet_bot
 ```
 
-**Eslatma:** CI/CD ishlatadigan bo‘lsangiz, birinchi marta shu qadamlardan keyin serverda `.env` sozlab, bir martalik `docker compose up -d --build` ishga tushiring. Keyingi yangilanishlar GitHub Actions orqali avtomatik bajariladi.
+`YOUR_USERNAME` o‘rniga GitHub username yozing. Repo private bo‘lsa ham, shu kalit orqali clone/pull ishlaydi.
+
+---
+
+### Alternativa: Personal Access Token (HTTPS uchun)
+
+Agar HTTPS orqali clone qilmoqchi bo‘lsangiz: GitHub → **Settings** → **Developer settings** → **Personal access tokens** → **Tokens (classic)** → **Generate new token**. `repo` scope belgilang, tokenni nusxalab oling va clone paytida parol o‘rniga shu tokenni kiriting:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/my_vet_bot.git
+# Username: YOUR_USERNAME
+# Password: <token>
+```
+
+SSH usuli oddiyroq va keyingi `git pull` larda parol so‘ramaydi.
 
 ---
 
