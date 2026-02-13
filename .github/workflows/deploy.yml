@@ -1,0 +1,36 @@
+# Deploy PetHelper Bot to VPS via SSH
+# Trigger: push to main/master, or "Run workflow" in Actions tab.
+# Required GitHub Secrets: SSH_HOST, SSH_USER, SSH_PRIVATE_KEY
+# Optional: SSH_PORT (default 22), DEPLOY_PATH (default /home/deploy/my_vet_bot)
+
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: ${{ github.ref_name }}
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          envs: BRANCH
+          script: |
+            set -e
+            DEPLOY_PATH="${{ secrets.DEPLOY_PATH || '/home/deploy/my_vet_bot' }}"
+            cd "$DEPLOY_PATH" || { echo "Directory not found: $DEPLOY_PATH"; exit 1; }
+            git fetch origin
+            git reset --hard "origin/${BRANCH}"
+            docker compose pull 2>/dev/null || true
+            docker compose up -d --build
