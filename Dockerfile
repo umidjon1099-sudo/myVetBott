@@ -27,18 +27,21 @@ RUN apt-get update && apt-get install -y \
     postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy Python dependencies from builder
-COPY --from=builder /root/.local /root/.local
+# Create non-root user first so we can install packages into their home
+RUN useradd -m -u 1000 botuser
 
-# Add local bin to PATH
-ENV PATH=/root/.local/bin:$PATH
+# Copy Python dependencies into botuser's home (Python looks in ~/.local when running as botuser)
+COPY --from=builder /root/.local /home/botuser/.local
+RUN chown -R botuser:botuser /home/botuser/.local
+ENV PATH=/home/botuser/.local/bin:$PATH
 
 # Copy application code
 COPY . .
 
-# Create non-root user
-RUN useradd -m -u 1000 botuser && \
-    chown -R botuser:botuser /app
+# Create logs dir (not in repo due to .gitignore) so botuser can write
+RUN mkdir -p /app/logs
+
+RUN chown -R botuser:botuser /app
 
 USER botuser
 

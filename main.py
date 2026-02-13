@@ -15,14 +15,18 @@ from app.middlewares import LanguageMiddleware
 from app.handlers import start, profile, clinic, reminder, ads, symptoms, other
 
 
-# Configure logging
+# Configure logging (StreamHandler always; FileHandler if logs/ writable)
+_handlers = [logging.StreamHandler(sys.stdout)]
+try:
+    import os
+    os.makedirs('logs', exist_ok=True)
+    _handlers.append(logging.FileHandler('logs/bot.log', encoding='utf-8'))
+except Exception:
+    pass
 logging.basicConfig(
     level=getattr(logging, settings.LOG_LEVEL),
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.StreamHandler(sys.stdout),
-        logging.FileHandler('logs/bot.log', encoding='utf-8')
-    ]
+    handlers=_handlers
 )
 
 logger = logging.getLogger(__name__)
