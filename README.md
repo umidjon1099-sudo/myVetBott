@@ -1,4 +1,4 @@
-# ?? PetHelper Bot - Professional Veterinary Assistant
+# PetHelper Bot - Professional Veterinary Assistant
 
 [![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![aiogram Version](https://img.shields.io/badge/aiogram-3.4+-green.svg)](https://docs.aiogram.dev/)
@@ -8,108 +8,108 @@
 
 Professional Telegram bot for veterinary services, pet care, and animal health management in Uzbekistan. Features multilingual support (Russian, English, Uzbek), database integration, and modular architecture.
 
-## ?? Table of Contents
+## Table of Contents
 
-- [Features](#-features)
-- [Architecture](#-architecture)
-- [Requirements](#-requirements)
-- [Installation](#-installation)
-- [Configuration](#-configuration)
-- [Usage](#-usage)
-- [Development](#-development)
-- [Deployment](#-deployment)
-- [Testing](#-testing)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Development](#development)
+- [Deployment](#deployment)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-## ? Features
+## Features
 
-### ?? Multilingual Support
+### Multilingual Support
 - **3 Languages**: Russian, English, O'zbek
 - Easy language switching
 - Localized content and UI
 
-### ?? User Profiles
+### User Profiles
 - **Pet Owner Profiles**: Store pet information, medical history
 - **Veterinarian Profiles**: Professional profiles with specialization, experience
 - Profile management and editing
 
-### ?? Veterinary Services
+### Veterinary Services
 - **Clinic Finder**: Search veterinary clinics by city
 - **Pharmacy Locator**: Find veterinary pharmacies
 - **Animal Shelters**: Locate animal shelters and rescue centers
 - **Pet Shops**: Directory of pet supply stores
 
-### ?? Consultation Features
+### Consultation Features
 - **Vet Chat**: Connect with registered veterinarians
 - **Appointment Booking**: Schedule vet appointments
 - **Symptom Checker**: AI-powered symptom analysis and recommendations
 
-### ? Smart Reminders
+### Smart Reminders
 - Medication reminders
 - Vaccination schedules
 - Regular procedure notifications
 - Customizable reminder types (one-time, daily, weekly, custom)
 
-### ?? Community Features
+### Community Features
 - **Advertisements**: Post and browse pet-related ads
 - **News Feed**: Latest animal care news
 - **Pet Facts**: Educational content about animals
 - **Feeding Guides**: Detailed nutrition information
 
-### ?? History & Analytics
+### History & Analytics
 - Action history tracking
 - Medical record storage
 - Treatment history
 
-## ?? Architecture
+## Architecture
 
 ### Project Structure
 
 ```
 my_vet_bot/
-??? app/
-?   ??? __init__.py
-?   ??? config.py              # Configuration management
-?   ??? database/              # Database layer
-?   ?   ??? models.py          # SQLAlchemy models
-?   ?   ??? database.py        # DB connection
-?   ?   ??? crud.py            # CRUD operations
-?   ??? handlers/              # Message handlers
-?   ?   ??? start.py           # Start command & menu
-?   ?   ??? profile.py         # Profile management
-?   ?   ??? clinic.py          # Clinic/pharmacy/shelter
-?   ?   ??? reminder.py        # Reminder system
-?   ?   ??? ads.py             # Advertisements
-?   ?   ??? symptoms.py        # Symptom checker
-?   ?   ??? other.py           # Other handlers
-?   ??? keyboards/             # Keyboard layouts
-?   ?   ??? main_menu.py       # Main menu
-?   ?   ??? inline.py          # Inline keyboards
-?   ??? locales/               # Translations
-?   ?   ??? ru.py              # Russian
-?   ?   ??? en.py              # English
-?   ?   ??? uz.py              # Uzbek
-?   ?   ??? loader.py          # Locale loader
-?   ??? middlewares/           # Middleware
-?   ?   ??? language.py        # Language detection
-?   ??? services/              # Business logic
-?   ?   ??? symptom_checker.py # Symptom analysis
-?   ?   ??? reminder_scheduler.py # Reminder scheduling
-?   ??? utils/                 # Utilities
-?       ??? helpers.py         # Helper functions
-??? logs/                      # Application logs
-??? migrations/                # Alembic migrations
-??? tests/                     # Test suite
-??? .env.example              # Environment template
-??? .dockerignore
-??? .gitignore
-??? docker-compose.yml        # Docker composition
-??? Dockerfile                # Docker image
-??? main.py                   # Application entry point
-??? requirements.txt          # Python dependencies
-??? README.md                 # This file
-??? RELEASE_PLAN.md          # Deployment guide
+|-- app/
+|   |-- __init__.py
+|   |-- config.py              # Configuration management
+|   |-- database/              # Database layer
+|   |   |-- models.py          # SQLAlchemy models
+|   |   |-- database.py        # DB connection
+|   |   |-- crud.py            # CRUD operations
+|   |-- handlers/              # Message handlers
+|   |   |-- start.py           # Start command & menu
+|   |   |-- profile.py         # Profile management
+|   |   |-- clinic.py          # Clinic/pharmacy/shelter
+|   |   |-- reminder.py        # Reminder system
+|   |   |-- ads.py             # Advertisements
+|   |   |-- symptoms.py        # Symptom checker
+|   |   |-- other.py           # Other handlers
+|   |-- keyboards/             # Keyboard layouts
+|   |   |-- main_menu.py       # Main menu
+|   |   |-- inline.py         # Inline keyboards
+|   |-- locales/              # Translations
+|   |   |-- ru.py              # Russian
+|   |   |-- en.py              # English
+|   |   |-- uz.py              # Uzbek
+|   |   |-- loader.py          # Locale loader
+|   |-- middlewares/           # Middleware
+|   |   |-- language.py        # Language detection
+|   |-- services/              # Business logic
+|   |   |-- symptom_checker.py # Symptom analysis
+|   |   |-- reminder_scheduler.py # Reminder scheduling
+|   |-- utils/                 # Utilities
+|   |   |-- helpers.py         # Helper functions
+|-- logs/                      # Application logs
+|-- migrations/                # Alembic migrations
+|-- tests/                     # Test suite
+|-- .env.example              # Environment template
+|-- .dockerignore
+|-- .gitignore
+|-- docker-compose.yml        # Docker composition
+|-- Dockerfile                # Docker image
+|-- main.py                   # Application entry point
+|-- requirements.txt          # Python dependencies
+|-- README.md                 # This file
+|-- RELEASE_PLAN.md           # Deployment guide
 ```
 
 ### Technology Stack
@@ -122,7 +122,7 @@ my_vet_bot/
 - **Configuration**: [Pydantic Settings](https://docs.pydantic.dev/) - Type-safe config
 - **Containerization**: [Docker](https://www.docker.com/) - Easy deployment
 
-## ?? Requirements
+## Requirements
 
 ### System Requirements
 - **Python**: 3.11 or higher
@@ -141,7 +141,7 @@ Key dependencies:
 - pydantic 2.6.1
 - redis 5.0.1
 
-## ?? Installation
+## Installation
 
 ### Option 1: Docker Compose (Recommended)
 
@@ -216,7 +216,7 @@ Key dependencies:
    python main.py
    ```
 
-## ?? Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -257,7 +257,7 @@ SENTRY_DSN=your_sentry_dsn
 3. Follow instructions to create your bot
 4. Copy the token and add to `.env`
 
-## ?? Usage
+## Usage
 
 ### Starting the Bot
 
@@ -299,7 +299,7 @@ python main.py
    - Read news
    - Learn pet facts
 
-## ?? Development
+## Development
 
 ### Project Setup for Development
 
@@ -371,7 +371,7 @@ alembic downgrade -1
 - Keep functions small and focused
 - Use meaningful variable names
 
-## ?? Deployment
+## Deployment
 
 ### Production Deployment
 
@@ -416,7 +416,7 @@ docker stats
 docker compose exec postgres pg_dump -U vetbot_user vetbot > backup.sql
 ```
 
-## ?? Testing
+## Testing
 
 ### Running Tests
 
@@ -448,7 +448,7 @@ async def test_start_command():
     pass
 ```
 
-## ?? Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -465,24 +465,24 @@ Contributions are welcome! Please follow these steps:
 - Follow code style guidelines
 - Keep commits atomic and descriptive
 
-## ?? License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ?? Acknowledgments
+## Acknowledgments
 
 - [aiogram](https://docs.aiogram.dev/) - Async Python framework for Telegram Bot API
 - [SQLAlchemy](https://www.sqlalchemy.org/) - Python SQL toolkit
 - [PostgreSQL](https://www.postgresql.org/) - Powerful open source database
 - Telegram Bot API documentation
 
-## ?? Support
+## Support
 
 - **Issues**: [GitHub Issues](https://github.com/yourusername/my_vet_bot/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/my_vet_bot/discussions)
 - **Email**: your.email@example.com
 
-## ?? Roadmap
+## Roadmap
 
 ### Version 2.1 (Planned)
 - [ ] Mini App integration
@@ -498,7 +498,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Integration with vet clinic systems
 - [ ] Mobile app (React Native)
 
-## ?? Stats
+## Stats
 
 - **Languages**: 3 (Russian, English, Uzbek)
 - **Handlers**: 50+ message handlers
@@ -506,12 +506,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Features**: 15+ major features
 - **Lines of Code**: 5000+ (modular and maintainable)
 
-## ?? Star History
+## Star History
 
-If you find this project useful, please consider giving it a star ?
+If you find this project useful, please consider giving it a star on GitHub.
 
 ---
 
-**Made with ?? for pet owners and veterinarians**
+**Made with care for pet owners and veterinarians**
 
 Last Updated: 2024-02-13 | Version: 2.0.0
