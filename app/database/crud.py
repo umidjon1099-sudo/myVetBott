@@ -263,14 +263,14 @@ async def add_history(
     user_id: int,
     action: str,
     action_type: Optional[str] = None,
-    metadata: Optional[dict] = None,
+    extra_data: Optional[dict] = None,
 ) -> History:
     """Add history entry"""
     history = History(
         user_id=user_id,
         action=action,
         action_type=action_type,
-        metadata=metadata,
+        extra_data=extra_data,
     )
     session.add(history)
     await session.flush()

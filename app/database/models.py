@@ -169,7 +169,7 @@ class History(Base):
     
     action: Mapped[str] = mapped_column(String(500))
     action_type: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)  # profile, reminder, ad, etc.
-    metadata: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)
+    extra_data: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)  # was 'metadata' (reserved in SQLAlchemy)
     
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     
