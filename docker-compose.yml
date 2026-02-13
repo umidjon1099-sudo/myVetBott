@@ -20,7 +20,7 @@ services:
     networks:
       - vetbot_network
 
-  # Redis Cache (Optional)
+  # Redis Cache (optional; only used by bot via internal network, no host port needed)
   redis:
     image: redis:7-alpine
     container_name: vetbot_redis
@@ -28,8 +28,6 @@ services:
     command: redis-server --appendonly yes
     volumes:
       - redis_data:/data
-    ports:
-      - "${REDIS_PORT:-6379}:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
