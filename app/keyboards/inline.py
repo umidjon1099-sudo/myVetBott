@@ -138,7 +138,7 @@ def create_animal_type_keyboard(language: str = "ru") -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="🐹 Грызуны", callback_data="animal_rodent")],
         [InlineKeyboardButton(text="🐦 Птицы", callback_data="animal_bird")],
         [InlineKeyboardButton(text="🐠 Рыбки", callback_data="animal_fish")],
-        [InlineKeyboardButton(text="🔙 Назад", callback_data="menu_symptoms")]
+        [InlineKeyboardButton(text="🔙 Назад", callback_data="back_to_menu")]
     ])
 
 
