@@ -14,7 +14,7 @@ import json
 
 
 # --- КОНФИГУРАЦИЯddd ---
-API_TOKEN = "8467556633:AAFwl2sXSzq-3SCSHfp0TCSr4vbduIHOOlU"  # myvet glavniy
+API_TOKEN = "8467556633:AAFwl2sXSzq-3SCSHfp0TCSr4vbduIHOOlU"  # myvet glavniyy
 #API_TOKEN = "8489986940:AAHwTZeAUYXFYmi8x6ZBoVIJwtF-jJ3TNqs"  # Vet_Hel_per_Bot
 
 # Настраиваем логгирование
