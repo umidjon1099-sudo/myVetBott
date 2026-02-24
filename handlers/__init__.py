@@ -1,0 +1,38 @@
+﻿"""Пакет обработчиков: импорт и регистрация модулей кнопок."""
+from . import (
+    ads_button,
+    appointment_button,
+    clinics_button,
+    clinics_menu_button,
+    feeding_button,
+    history_button,
+    language_button,
+    mini_app_button,
+    news_button,
+    pharmacies_menu_button,
+    profile_button,
+    reminders_button,
+    shelters_menu_button,
+    start_button,
+    symptoms_button,
+    vet_chat_button,
+)
+
+__all__ = [
+    "ads_button",
+    "appointment_button",
+    "clinics_button",
+    "clinics_menu_button",
+    "feeding_button",
+    "history_button",
+    "language_button",
+    "mini_app_button",
+    "news_button",
+    "pharmacies_menu_button",
+    "profile_button",
+    "reminders_button",
+    "shelters_menu_button",
+    "start_button",
+    "symptoms_button",
+    "vet_chat_button",
+]
