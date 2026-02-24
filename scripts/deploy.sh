@@ -15,8 +15,8 @@ log() {
 log "=== Deploy started ==="
 log "Project dir: $PROJECT_DIR"
 
-log "--- git pull origin main ---"
-git pull origin main
+log "--- git pull ---"
+git pull
 
 log "--- docker compose up -d --build ---"
 docker compose up -d --build

@@ -32,5 +32,4 @@ jobs:
             cd "$DEPLOY_PATH" || { echo "Directory not found: $DEPLOY_PATH"; exit 1; }
             git fetch origin
             git reset --hard "origin/${BRANCH}"
-            docker compose pull 2>/dev/null || true
-            docker compose up -d --build
+            ./scripts/deploy.sh
