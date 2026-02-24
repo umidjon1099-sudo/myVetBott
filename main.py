@@ -114,9 +114,9 @@ TEXTS = {
         "uz": "📋 Tarix"
     },
     "language": {
-        "ru": "🌍 Языкaaaaa",
-        "en": "🌍 Languageaaaa",
-        "uz": "🌍 Tilaaaa"
+        "ru": "🌍 Язык",
+        "en": "🌍 Language",
+        "uz": "🌍 Til"
     },
     "mini_app": {
         "ru": "📱 Mini App",
