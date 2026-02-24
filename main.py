@@ -14,7 +14,8 @@ import json
 
 
 # --- КОНФИГУРАЦИЯddd ---
-API_TOKEN = "8467556633:AAFwl2sXSzq-3SCSHfp0TCSr4vbduIHOOlU"  # ЗАМЕНИТЕ НА СВОЙ ТОКЕН!
+API_TOKEN = "8467556633:AAFwl2sXSzq-3SCSHfp0TCSr4vbduIHOOlU"  # myvet glavniy
+#API_TOKEN = "8489986940:AAHwTZeAUYXFYmi8x6ZBoVIJwtF-jJ3TNqs"  # Vet_Hel_per_Bot
 
 # Настраиваем логгирование
 logging.basicConfig(
@@ -42,7 +43,7 @@ appointments = {}  # Записи на прием {user_id: []}
 messages_to_delete = {}  # Для управления сообщениями
 
 
-makedirs ('Главные кнопки меню')
+makedirs ('Главные кнопки меню', exist_ok=True)
 
 # ========== ВСЕ ТЕКСТЫ БОТА НА 3 ЯЗЫКАХ ==========
 TEXTS = {
@@ -113,9 +114,9 @@ TEXTS = {
         "uz": "📋 Tarix"
     },
     "language": {
-        "ru": "🌍 Язык",
-        "en": "🌍 Language",
-        "uz": "🌍 Til"
+        "ru": "🌍 Языкaaaaa",
+        "en": "🌍 Languageaaaa",
+        "uz": "🌍 Tilaaaa"
     },
     "mini_app": {
         "ru": "📱 Mini App",
