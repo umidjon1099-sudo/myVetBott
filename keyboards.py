@@ -95,9 +95,9 @@ def create_animal_type_keyboard(user_id: int = None):
 
 def create_feeding_keyboard(user_id: int = None):
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=f"🏠 {_text(user_id, 'domestic_pets')}", callback_data="feeding_domestic")],
-        [InlineKeyboardButton(text=f"🐄 {_text(user_id, 'farm_animals')}", callback_data="feeding_farm")],
-        [InlineKeyboardButton(text=f"🦎 {_text(user_id, 'exotic_animals')}", callback_data="feeding_exotic")],
+        [InlineKeyboardButton(text=_text(user_id, "domestic_pets"), callback_data="feeding_domestic")],
+        [InlineKeyboardButton(text=_text(user_id, "farm_animals"), callback_data="feeding_farm")],
+        [InlineKeyboardButton(text=_text(user_id, "exotic_animals"), callback_data="feeding_exotic")],
         [InlineKeyboardButton(text=_kbd_text(user_id, "back"), callback_data="back_to_menu")],
     ])
 
