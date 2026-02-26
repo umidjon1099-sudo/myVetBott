@@ -3,18 +3,30 @@ from aiogram import F, types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 from bot_config import dp
+from handlers.common import tr
+
+LOCAL = {
+    "title": {
+        "ru": "📱 <b>PetHelper Mini App</b>\n\nОткройте наше мини-приложение для дополнительных функций:",
+        "en": "📱 <b>PetHelper Mini App</b>\n\nOpen our mini app for additional features:",
+        "uz": "📱 <b>PetHelper Mini App</b>\n\nQo'shimcha imkoniyatlar uchun mini ilovani oching:",
+    },
+    "open": {"ru": "🚀 Открыть Mini App", "en": "🚀 Open Mini App", "uz": "🚀 Mini App ni ochish"},
+    "back": {"ru": "🔙 Назад", "en": "🔙 Back", "uz": "🔙 Orqaga"},
+}
 
 
 @dp.callback_query(F.data == "menu_mini_app")
 async def mini_app_menu(callback: types.CallbackQuery):
+    user_id = callback.from_user.id
     web_app = WebAppInfo(url="https://example.com/pet-helper-app")
 
     await callback.message.answer(
-        "📱 <b>PetHelper Mini App</b>\n\nОткройте наше мини-приложение для дополнительных функций:",
+        tr(user_id, LOCAL["title"]),
         reply_markup=InlineKeyboardMarkup(
             inline_keyboard=[
-                [InlineKeyboardButton(text="🚀 Открыть Mini App", web_app=web_app)],
-                [InlineKeyboardButton(text="🔙 Назад", callback_data="back_to_menu")],
+                [InlineKeyboardButton(text=tr(user_id, LOCAL["open"]), web_app=web_app)],
+                [InlineKeyboardButton(text=tr(user_id, LOCAL["back"]), callback_data="back_to_menu")],
             ]
         ),
     )

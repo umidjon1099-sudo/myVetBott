@@ -6,9 +6,40 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from bot_config import dp
 from data_store import user_profiles, vet_profiles
 from keyboards import get_profile_menu
-from handlers.common import add_to_history, get_text, safe_edit_message
+from handlers.common import add_to_history, get_text, safe_edit_message, tr
 from handlers.start_button import back_to_main_menu
 from handlers.states import ProfileStates, VetProfileStates
+
+LOCAL = {
+    "owner_create": {"ru": "👤 <b>Создание профиля владельца</b>", "en": "👤 <b>Create Owner Profile</b>", "uz": "👤 <b>Ega profilini yaratish</b>"},
+    "cancel": {"ru": "❌ Отмена", "en": "❌ Cancel", "uz": "❌ Bekor qilish"},
+    "owner_created": {"ru": "✅ <b>Профиль владельца успешно создан!</b>", "en": "✅ <b>Owner profile created successfully!</b>", "uz": "✅ <b>Ega profili muvaffaqiyatli yaratildi!</b>"},
+    "vet_create": {"ru": "👨‍⚕️ <b>Создание профиля ветеринара</b>\n\nВведите ФИО:", "en": "👨‍⚕️ <b>Create Veterinarian Profile</b>\n\nEnter full name:", "uz": "👨‍⚕️ <b>Veterinar profilini yaratish</b>\n\nF.I.O kiriting:"},
+    "vet_phone": {"ru": "📞 Введите номер телефона:", "en": "📞 Enter phone number:", "uz": "📞 Telefon raqamini kiriting:"},
+    "vet_city": {"ru": "🏙 Введите город:", "en": "🏙 Enter city:", "uz": "🏙 Shaharni kiriting:"},
+    "vet_spec": {"ru": "🩺 Введите специализацию:", "en": "🩺 Enter specialization:", "uz": "🩺 Mutaxassislikni kiriting:"},
+    "vet_exp": {"ru": "📅 Введите опыт работы:", "en": "📅 Enter work experience:", "uz": "📅 Ish tajribasini kiriting:"},
+    "vet_edu": {"ru": "🎓 Введите образование:", "en": "🎓 Enter education:", "uz": "🎓 Ta'limni kiriting:"},
+    "vet_tg": {"ru": "💬 Введите Telegram username:", "en": "💬 Enter Telegram username:", "uz": "💬 Telegram username kiriting:"},
+    "vet_price": {"ru": "💰 Введите стоимость консультации:", "en": "💰 Enter consultation price:", "uz": "💰 Konsultatsiya narxini kiriting:"},
+    "vet_info": {"ru": "📝 Дополнительная информация:", "en": "📝 Additional information:", "uz": "📝 Qo'shimcha ma'lumot:"},
+    "vet_created": {"ru": "✅ <b>Профиль ветеринара успешно создан!</b>", "en": "✅ <b>Vet profile created successfully!</b>", "uz": "✅ <b>Veterinar profili muvaffaqiyatli yaratildi!</b>"},
+    "owner_view_title": {"ru": "👤 <b>Профиль владельца</b>", "en": "👤 <b>Owner Profile</b>", "uz": "👤 <b>Ega profili</b>"},
+    "name": {"ru": "Имя", "en": "Name", "uz": "Ism"},
+    "phone": {"ru": "Телефон", "en": "Phone", "uz": "Telefon"},
+    "city": {"ru": "Город", "en": "City", "uz": "Shahar"},
+    "pet": {"ru": "Питомец", "en": "Pet", "uz": "Uy hayvoni"},
+    "type": {"ru": "Тип", "en": "Type", "uz": "Turi"},
+    "vet_view_title": {"ru": "👨‍⚕️ <b>Профиль ветеринара</b>", "en": "👨‍⚕️ <b>Veterinarian Profile</b>", "uz": "👨‍⚕️ <b>Veterinar profili</b>"},
+    "fio": {"ru": "ФИО", "en": "Full name", "uz": "F.I.O"},
+    "spec": {"ru": "Специализация", "en": "Specialization", "uz": "Mutaxassislik"},
+    "exp": {"ru": "Опыт", "en": "Experience", "uz": "Tajriba"},
+    "price": {"ru": "Цена", "en": "Price", "uz": "Narx"},
+    "profile_cleared": {"ru": "✅ Профиль очищен!", "en": "✅ Profile cleared!", "uz": "✅ Profil tozalandi!"},
+    "history_owner": {"ru": "👤 Создан профиль владельца", "en": "👤 Owner profile created", "uz": "👤 Ega profili yaratildi"},
+    "history_vet": {"ru": "👨‍⚕️ Создан профиль ветеринара", "en": "👨‍⚕️ Vet profile created", "uz": "👨‍⚕️ Veterinar profili yaratildi"},
+    "history_clear": {"ru": "🗑️ Профили очищены", "en": "🗑️ Profiles cleared", "uz": "🗑️ Profillar tozalandi"},
+}
 
 
 @dp.callback_query(F.data == "menu_profile")
@@ -29,9 +60,9 @@ async def start_create_profile(callback: types.CallbackQuery, state: FSMContext)
 
     await safe_edit_message(
         callback.message,
-        "👤 <b>Создание профиля владельца</b>\n\n" + get_text(user_id, "enter_owner_name"),
+        f"{tr(user_id, LOCAL['owner_create'])}\n\n{get_text(user_id, 'enter_owner_name')}",
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(user_id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
     await callback.answer()
@@ -46,7 +77,7 @@ async def process_owner_name(message: types.Message, state: FSMContext):
     await message.answer(
         get_text(user_id, "enter_owner_phone"),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(user_id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -60,7 +91,7 @@ async def process_owner_phone(message: types.Message, state: FSMContext):
     await message.answer(
         get_text(user_id, "enter_city"),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(user_id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -74,7 +105,7 @@ async def process_city(message: types.Message, state: FSMContext):
     await message.answer(
         get_text(user_id, "enter_pet_name"),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(user_id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -88,7 +119,7 @@ async def process_pet_name(message: types.Message, state: FSMContext):
     await message.answer(
         get_text(user_id, "enter_pet_type"),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(user_id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -108,10 +139,10 @@ async def process_pet_type(message: types.Message, state: FSMContext):
 
     user_profiles[user_id] = profile_data
     await state.clear()
-    add_to_history(user_id, f"👤 Создан профиль владельца: {profile_data['pet_name']}")
+    add_to_history(user_id, f"{tr(user_id, LOCAL['history_owner'])}: {profile_data['pet_name']}")
 
     await message.answer(
-        "✅ <b>Профиль владельца успешно создан!</b>",
+        tr(user_id, LOCAL["owner_created"]),
         reply_markup=get_profile_menu(user_id),
     )
 
@@ -122,9 +153,9 @@ async def start_create_vet_profile(callback: types.CallbackQuery, state: FSMCont
 
     await safe_edit_message(
         callback.message,
-        "👨‍⚕️ <b>Создание профиля ветеринара</b>\n\nВведите ФИО:",
+        tr(callback.from_user.id, LOCAL["vet_create"]),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(callback.from_user.id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
     await callback.answer()
@@ -135,9 +166,9 @@ async def process_vet_name(message: types.Message, state: FSMContext):
     await state.update_data(vet_name=message.text)
     await state.set_state(VetProfileStates.waiting_for_vet_phone)
     await message.answer(
-        "📞 Введите номер телефона:",
+        tr(message.from_user.id, LOCAL["vet_phone"]),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(message.from_user.id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -147,9 +178,9 @@ async def process_vet_phone(message: types.Message, state: FSMContext):
     await state.update_data(vet_phone=message.text)
     await state.set_state(VetProfileStates.waiting_for_vet_city)
     await message.answer(
-        "🏙 Введите город:",
+        tr(message.from_user.id, LOCAL["vet_city"]),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(message.from_user.id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -159,9 +190,9 @@ async def process_vet_city(message: types.Message, state: FSMContext):
     await state.update_data(vet_city=message.text)
     await state.set_state(VetProfileStates.waiting_for_vet_specialization)
     await message.answer(
-        "🩺 Введите специализацию:",
+        tr(message.from_user.id, LOCAL["vet_spec"]),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(message.from_user.id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -171,9 +202,9 @@ async def process_vet_specialization(message: types.Message, state: FSMContext):
     await state.update_data(vet_specialization=message.text)
     await state.set_state(VetProfileStates.waiting_for_vet_experience)
     await message.answer(
-        "📅 Введите опыт работы:",
+        tr(message.from_user.id, LOCAL["vet_exp"]),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(message.from_user.id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -183,9 +214,9 @@ async def process_vet_experience(message: types.Message, state: FSMContext):
     await state.update_data(vet_experience=message.text)
     await state.set_state(VetProfileStates.waiting_for_vet_education)
     await message.answer(
-        "🎓 Введите образование:",
+        tr(message.from_user.id, LOCAL["vet_edu"]),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(message.from_user.id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -195,9 +226,9 @@ async def process_vet_education(message: types.Message, state: FSMContext):
     await state.update_data(vet_education=message.text)
     await state.set_state(VetProfileStates.waiting_for_vet_telegram)
     await message.answer(
-        "💬 Введите Telegram username:",
+        tr(message.from_user.id, LOCAL["vet_tg"]),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(message.from_user.id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -207,9 +238,9 @@ async def process_vet_telegram(message: types.Message, state: FSMContext):
     await state.update_data(vet_telegram=message.text)
     await state.set_state(VetProfileStates.waiting_for_vet_consultation_price)
     await message.answer(
-        "💰 Введите стоимость консультации:",
+        tr(message.from_user.id, LOCAL["vet_price"]),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(message.from_user.id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -219,9 +250,9 @@ async def process_vet_consultation_price(message: types.Message, state: FSMConte
     await state.update_data(vet_consultation_price=message.text)
     await state.set_state(VetProfileStates.waiting_for_vet_info)
     await message.answer(
-        "📝 Дополнительная информация:",
+        tr(message.from_user.id, LOCAL["vet_info"]),
         reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text="❌ Отмена", callback_data="menu_profile")]]
+            inline_keyboard=[[InlineKeyboardButton(text=tr(message.from_user.id, LOCAL["cancel"]), callback_data="menu_profile")]]
         ),
     )
 
@@ -244,10 +275,10 @@ async def process_vet_info(message: types.Message, state: FSMContext):
     }
 
     await state.clear()
-    add_to_history(user_id, "👨‍⚕️ Создан профиль ветеринара")
+    add_to_history(user_id, tr(user_id, LOCAL["history_vet"]))
 
     await message.answer(
-        "✅ <b>Профиль ветеринара успешно создан!</b>",
+        tr(user_id, LOCAL["vet_created"]),
         reply_markup=get_profile_menu(user_id),
     )
 
@@ -261,12 +292,12 @@ async def view_profile(callback: types.CallbackQuery):
         text = get_text(user_id, "profile_empty")
     else:
         text = (
-            "👤 <b>Профиль владельца</b>\n\n"
-            f"<b>Имя:</b> {profile.get('owner_name', '-') }\n"
-            f"<b>Телефон:</b> {profile.get('owner_phone', '-') }\n"
-            f"<b>Город:</b> {profile.get('city', '-') }\n"
-            f"<b>Питомец:</b> {profile.get('pet_name', '-') }\n"
-            f"<b>Тип:</b> {profile.get('pet_type', '-') }"
+            f"{tr(user_id, LOCAL['owner_view_title'])}\n\n"
+            f"<b>{tr(user_id, LOCAL['name'])}:</b> {profile.get('owner_name', '-') }\n"
+            f"<b>{tr(user_id, LOCAL['phone'])}:</b> {profile.get('owner_phone', '-') }\n"
+            f"<b>{tr(user_id, LOCAL['city'])}:</b> {profile.get('city', '-') }\n"
+            f"<b>{tr(user_id, LOCAL['pet'])}:</b> {profile.get('pet_name', '-') }\n"
+            f"<b>{tr(user_id, LOCAL['type'])}:</b> {profile.get('pet_type', '-') }"
         )
 
     await safe_edit_message(callback.message, text, reply_markup=get_profile_menu(user_id))
@@ -282,13 +313,13 @@ async def view_vet_profile(callback: types.CallbackQuery):
         text = get_text(user_id, "vet_profile_empty")
     else:
         text = (
-            "👨‍⚕️ <b>Профиль ветеринара</b>\n\n"
-            f"<b>ФИО:</b> {profile.get('vet_name', '-') }\n"
-            f"<b>Телефон:</b> {profile.get('vet_phone', '-') }\n"
-            f"<b>Город:</b> {profile.get('vet_city', '-') }\n"
-            f"<b>Специализация:</b> {profile.get('vet_specialization', '-') }\n"
-            f"<b>Опыт:</b> {profile.get('vet_experience', '-') }\n"
-            f"<b>Цена:</b> {profile.get('vet_consultation_price', '-') }"
+            f"{tr(user_id, LOCAL['vet_view_title'])}\n\n"
+            f"<b>{tr(user_id, LOCAL['fio'])}:</b> {profile.get('vet_name', '-') }\n"
+            f"<b>{tr(user_id, LOCAL['phone'])}:</b> {profile.get('vet_phone', '-') }\n"
+            f"<b>{tr(user_id, LOCAL['city'])}:</b> {profile.get('vet_city', '-') }\n"
+            f"<b>{tr(user_id, LOCAL['spec'])}:</b> {profile.get('vet_specialization', '-') }\n"
+            f"<b>{tr(user_id, LOCAL['exp'])}:</b> {profile.get('vet_experience', '-') }\n"
+            f"<b>{tr(user_id, LOCAL['price'])}:</b> {profile.get('vet_consultation_price', '-') }"
         )
 
     await safe_edit_message(callback.message, text, reply_markup=get_profile_menu(user_id))
@@ -301,6 +332,6 @@ async def clear_profile(callback: types.CallbackQuery):
     user_profiles.pop(user_id, None)
     vet_profiles.pop(user_id, None)
 
-    add_to_history(user_id, "🗑️ Профили очищены")
-    await callback.answer("✅ Профиль очищен!")
+    add_to_history(user_id, tr(user_id, LOCAL["history_clear"]))
+    await callback.answer(tr(user_id, LOCAL["profile_cleared"]))
     await back_to_main_menu(callback)

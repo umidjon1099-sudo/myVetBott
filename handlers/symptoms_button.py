@@ -35,6 +35,8 @@ LOCAL_UI = {
     "back_to_animals": {"ru": "🔙 К животным", "en": "🔙 To animals", "uz": "🔙 Hayvonlarga"},
     "back_to_symptoms": {"ru": "🔙 К симптомам", "en": "🔙 To symptoms", "uz": "🔙 Simptomlarga"},
     "back_to_menu": {"ru": "🏠 Главное меню", "en": "🏠 Main Menu", "uz": "🏠 Asosiy menyu"},
+    "unknown_animal": {"ru": "Неизвестное животное", "en": "Unknown animal", "uz": "Noma'lum hayvon"},
+    "invalid_symptom": {"ru": "Некорректный симптом", "en": "Invalid symptom", "uz": "Noto'g'ri simptom"},
 }
 
 
@@ -103,7 +105,7 @@ async def open_animal_symptoms(callback: types.CallbackQuery):
     animal_id = callback.data.replace("sym_animal_", "")
 
     if animal_id not in SYMPTOM_LIBRARY:
-        await callback.answer("Unknown animal", show_alert=False)
+        await callback.answer(_t(user_id, "unknown_animal"), show_alert=False)
         return
 
     await safe_edit_message(
@@ -124,11 +126,11 @@ async def open_symptom_details(callback: types.CallbackQuery):
         animal_id, idx_raw = payload.rsplit("_", 1)
         symptom_idx = int(idx_raw)
     except (ValueError, TypeError):
-        await callback.answer("Invalid symptom", show_alert=False)
+        await callback.answer(_t(user_id, "invalid_symptom"), show_alert=False)
         return
 
     if animal_id not in SYMPTOM_LIBRARY or symptom_idx >= len(SYMPTOM_LIBRARY[animal_id]):
-        await callback.answer("Invalid symptom", show_alert=False)
+        await callback.answer(_t(user_id, "invalid_symptom"), show_alert=False)
         return
 
     symptom = SYMPTOM_LIBRARY[animal_id][symptom_idx]

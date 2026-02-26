@@ -13,5 +13,6 @@ pet_facts = []  # Интересные факты
 feeding_guides = {}  # Информация о кормлении
 appointments = {}  # Записи на прием {user_id: []}
 messages_to_delete = {}  # Для управления сообщениями
+user_city_context = {}  # Контекст раздела для выбора города (clinics/pharmacies/shelters/pet_shop)
 
 makedirs("Главные кнопки меню", exist_ok=True)

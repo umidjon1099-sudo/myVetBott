@@ -32,6 +32,15 @@ def get_text(user_id: int, text_key: str, **kwargs) -> str:
     return text
 
 
+def get_user_language(user_id: int) -> str:
+    return user_languages.get(user_id, "ru")
+
+
+def tr(user_id: int, mapping: dict) -> str:
+    lang = get_user_language(user_id)
+    return mapping.get(lang, mapping.get("ru", ""))
+
+
 configure_text_provider(get_text)
 
 

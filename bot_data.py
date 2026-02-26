@@ -79,6 +79,7 @@ TEXTS = {
     },
     "appointment": {
         "ru": "📅 Запись к врачу",
+        "en": "📅 Appointment",
         "uz": "📅 Shifokorga yozilish"
     },
 

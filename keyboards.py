@@ -1,6 +1,7 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from bot_data import TEXTS, UZBEK_CITIES
+from data_store import user_languages
 
 _get_text = None
 
@@ -16,23 +17,53 @@ def _text(user_id, key):
     text_dict = TEXTS.get(key, {})
     return text_dict.get("ru", key)
 
+_KBD_TEXTS = {
+    "cancel": {"ru": "❌ Отмена", "en": "❌ Cancel", "uz": "❌ Bekor qilish"},
+    "back": {"ru": "🔙 Назад", "en": "🔙 Back", "uz": "🔙 Orqaga"},
+    "find_on_map": {"ru": "📍 Показать на карте", "en": "📍 Show on map", "uz": "📍 Xaritada ko'rsatish"},
+    "animal_dog": {"ru": "🐕 Собаки", "en": "🐕 Dogs", "uz": "🐕 Itlar"},
+    "animal_cat": {"ru": "🐱 Кошки", "en": "🐱 Cats", "uz": "🐱 Mushuklar"},
+    "animal_cow": {"ru": "🐄 Коровы", "en": "🐄 Cows", "uz": "🐄 Sigirlar"},
+    "animal_sheep": {"ru": "🐏 Бараны / Овцы", "en": "🐏 Rams / Sheep", "uz": "🐏 Qo'y / Qo'chqor"},
+    "animal_rodent": {"ru": "🐹 Грызуны", "en": "🐹 Rodents", "uz": "🐹 Kemiruvchilar"},
+    "animal_bird": {"ru": "🐦 Птицы", "en": "🐦 Birds", "uz": "🐦 Qushlar"},
+    "animal_fish": {"ru": "🐠 Рыбки", "en": "🐠 Fish", "uz": "🐠 Baliqlar"},
+    "animal_exotic": {"ru": "🦎 Экзотические", "en": "🦎 Exotic", "uz": "🦎 Ekzotik"},
+    "feed_dog": {"ru": "🐕 Собаки", "en": "🐕 Dogs", "uz": "🐕 Itlar"},
+    "feed_cat": {"ru": "🐱 Кошки", "en": "🐱 Cats", "uz": "🐱 Mushuklar"},
+    "feed_rodent": {"ru": "🐹 Грызуны", "en": "🐹 Rodents", "uz": "🐹 Kemiruvchilar"},
+    "feed_bird": {"ru": "🐦 Птицы", "en": "🐦 Birds", "uz": "🐦 Qushlar"},
+    "feed_fish": {"ru": "🐠 Рыбки", "en": "🐠 Fish", "uz": "🐠 Baliqlar"},
+    "feed_reptile": {"ru": "🐢 Рептилии", "en": "🐢 Reptiles", "uz": "🐢 Sudralib yuruvchilar"},
+}
 
-def create_reminder_keyboard():
+
+def _lang(user_id):
+    return user_languages.get(user_id, "ru")
+
+
+def _kbd_text(user_id, key):
+    lang = _lang(user_id)
+    item = _KBD_TEXTS.get(key, {})
+    return item.get(lang, item.get("ru", key))
+
+
+def create_reminder_keyboard(user_id: int = None):
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="⏰ Один раз", callback_data="reminder_one_time")],
-        [InlineKeyboardButton(text="🔄 Ежедневно", callback_data="reminder_daily")],
-        [InlineKeyboardButton(text="📆 Еженедельно", callback_data="reminder_weekly")],
-        [InlineKeyboardButton(text="⚙️ Настроить дни", callback_data="reminder_custom")],
-        [InlineKeyboardButton(text="🔙 Назад", callback_data="menu_reminders")],
+        [InlineKeyboardButton(text=_text(user_id, "one_time"), callback_data="reminder_one_time")],
+        [InlineKeyboardButton(text=_text(user_id, "daily"), callback_data="reminder_daily")],
+        [InlineKeyboardButton(text=_text(user_id, "weekly"), callback_data="reminder_weekly")],
+        [InlineKeyboardButton(text=_text(user_id, "custom"), callback_data="reminder_custom")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "back"), callback_data="menu_reminders")],
     ])
 
 
-def create_cities_keyboard():
+def create_cities_keyboard(user_id: int = None):
     buttons = []
     row = []
 
     for city_key in UZBEK_CITIES:
-        city_name = TEXTS.get(city_key, {}).get("ru", city_key)
+        city_name = _text(user_id, city_key)
         row.append(InlineKeyboardButton(text=city_name, callback_data=f"city_{city_key}"))
 
         if len(row) == 2:
@@ -42,50 +73,53 @@ def create_cities_keyboard():
     if row:
         buttons.append(row)
 
-    buttons.append([InlineKeyboardButton(text="📍 Найти по геолокации", callback_data="find_by_location")])
-    buttons.append([InlineKeyboardButton(text="🔙 Назад", callback_data="back_to_menu")])
+    buttons.append([InlineKeyboardButton(text=_text(user_id, "find_by_location"), callback_data="find_by_location")])
+    buttons.append([InlineKeyboardButton(text=_kbd_text(user_id, "back"), callback_data="back_to_menu")])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-def create_animal_type_keyboard():
+def create_animal_type_keyboard(user_id: int = None):
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🐕 Собака", callback_data="animal_dog")],
-        [InlineKeyboardButton(text="🐱 Кошка", callback_data="animal_cat")],
-        [InlineKeyboardButton(text="🐹 Грызуны", callback_data="animal_rodent")],
-        [InlineKeyboardButton(text="🐦 Птицы", callback_data="animal_bird")],
-        [InlineKeyboardButton(text="🐠 Рыбки", callback_data="animal_fish")],
-        [InlineKeyboardButton(text="🔙 Назад", callback_data="back_to_menu")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_dog"), callback_data="animal_dog")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_cat"), callback_data="animal_cat")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_cow"), callback_data="animal_cow")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_sheep"), callback_data="animal_sheep")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_rodent"), callback_data="animal_rodent")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_bird"), callback_data="animal_bird")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_fish"), callback_data="animal_fish")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_exotic"), callback_data="animal_exotic")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "back"), callback_data="back_to_menu")],
     ])
 
 
-def create_feeding_keyboard():
+def create_feeding_keyboard(user_id: int = None):
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🏠 Домашние животные", callback_data="feeding_domestic")],
-        [InlineKeyboardButton(text="🐄 Сельскохозяйственные", callback_data="feeding_farm")],
-        [InlineKeyboardButton(text="🦎 Экзотические", callback_data="feeding_exotic")],
-        [InlineKeyboardButton(text="🔙 Назад", callback_data="back_to_menu")],
+        [InlineKeyboardButton(text=f"🏠 {_text(user_id, 'domestic_pets')}", callback_data="feeding_domestic")],
+        [InlineKeyboardButton(text=f"🐄 {_text(user_id, 'farm_animals')}", callback_data="feeding_farm")],
+        [InlineKeyboardButton(text=f"🦎 {_text(user_id, 'exotic_animals')}", callback_data="feeding_exotic")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "back"), callback_data="back_to_menu")],
     ])
 
 
-def create_domestic_animals_keyboard():
+def create_domestic_animals_keyboard(user_id: int = None):
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🐕 Собаки", callback_data="feed_dog")],
-        [InlineKeyboardButton(text="🐱 Кошки", callback_data="feed_cat")],
-        [InlineKeyboardButton(text="🐹 Грызуны", callback_data="feed_rodent")],
-        [InlineKeyboardButton(text="🐦 Птицы", callback_data="feed_bird")],
-        [InlineKeyboardButton(text="🐠 Рыбки", callback_data="feed_fish")],
-        [InlineKeyboardButton(text="🐢 Рептилии", callback_data="feed_reptile")],
-        [InlineKeyboardButton(text="🔙 Назад", callback_data="menu_feeding")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "feed_dog"), callback_data="feed_dog")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "feed_cat"), callback_data="feed_cat")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "feed_rodent"), callback_data="feed_rodent")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "feed_bird"), callback_data="feed_bird")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "feed_fish"), callback_data="feed_fish")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "feed_reptile"), callback_data="feed_reptile")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "back"), callback_data="menu_feeding")],
     ])
 
 
-def create_language_keyboard():
+def create_language_keyboard(user_id: int = None):
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🇷🇺 Русский", callback_data="lang_ru")],
         [InlineKeyboardButton(text="🇺🇸 English", callback_data="lang_en")],
         [InlineKeyboardButton(text="🇺🇿 O'zbekcha", callback_data="lang_uz")],
-        [InlineKeyboardButton(text="🔙 Назад", callback_data="back_to_menu")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "back"), callback_data="back_to_menu")],
     ])
 
 

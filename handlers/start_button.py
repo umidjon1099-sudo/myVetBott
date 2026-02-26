@@ -13,7 +13,11 @@ from data_store import (
     user_symptoms,
 )
 from keyboards import get_main_menu
-from handlers.common import add_to_history, get_text, safe_edit_message
+from handlers.common import add_to_history, get_text, safe_edit_message, tr
+
+LOCAL = {
+    "signup_history": {"ru": "👋 Регистрация в боте", "en": "👋 Registered in bot", "uz": "👋 Botda ro'yxatdan o'tdi"},
+}
 
 
 @dp.message(Command("start"))
@@ -30,7 +34,7 @@ async def send_welcome(message: types.Message):
         user_history[user_id] = []
         user_ads[user_id] = []
         appointments[user_id] = []
-        add_to_history(user_id, "👋 Регистрация в боте")
+        add_to_history(user_id, tr(user_id, LOCAL["signup_history"]))
 
     welcome_text = get_text(user_id, "welcome", name=message.from_user.first_name)
 
