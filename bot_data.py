@@ -431,3 +431,139 @@ FEEDING_INFO = {
     }
 }
 
+# Симптомы по видам животных (мультиязычные названия и причины)
+SYMPTOM_ANIMALS = {
+    "dog": {
+        "emoji": "🐕",
+        "name": {"ru": "Собаки", "en": "Dogs", "uz": "Itlar"},
+    },
+    "cat": {
+        "emoji": "🐱",
+        "name": {"ru": "Кошки", "en": "Cats", "uz": "Mushuklar"},
+    },
+    "cow": {
+        "emoji": "🐄",
+        "name": {"ru": "Коровы", "en": "Cows", "uz": "Sigirlar"},
+    },
+    "sheep": {
+        "emoji": "🐏",
+        "name": {"ru": "Бараны / Овцы", "en": "Rams / Sheep", "uz": "Qo'y / Qo'chqor"},
+    },
+    "rodent": {
+        "emoji": "🐹",
+        "name": {"ru": "Грызуны", "en": "Rodents", "uz": "Kemiruvchilar"},
+    },
+    "bird": {
+        "emoji": "🐦",
+        "name": {"ru": "Птицы", "en": "Birds", "uz": "Qushlar"},
+    },
+    "fish": {
+        "emoji": "🐠",
+        "name": {"ru": "Рыбки", "en": "Fish", "uz": "Baliqlar"},
+    },
+    "exotic": {
+        "emoji": "🦎",
+        "name": {"ru": "Экзотические", "en": "Exotic Pets", "uz": "Ekzotik hayvonlar"},
+    },
+}
+
+SYMPTOM_LIBRARY = {
+    "dog": [
+        {
+            "title": {
+                "ru": "😴 Вялость / слабость",
+                "en": "😴 Lethargy / weakness",
+                "uz": "😴 Loqaydlik / holsizlik",
+            },
+            "causes": {
+                "ru": ["Лихорадка", "Боль", "Интоксикация", "Анемия", "Сердечная недостаточность", "Эндокринные нарушения"],
+                "en": ["Fever", "Pain", "Intoxication", "Anemia", "Heart failure", "Endocrine disorders"],
+                "uz": ["Isitma", "Og'riq", "Zaharlanish", "Anemiya", "Yurak yetishmovchiligi", "Endokrin buzilishlar"],
+            },
+            "emergency": False,
+        },
+        {
+            "title": {"ru": "🍽️ Отказ от корма / анорексия", "en": "🍽️ Food refusal / anorexia", "uz": "🍽️ Ozuqadan voz kechish / anoreksiya"},
+            "causes": {
+                "ru": ["Заболевания ЖКТ", "Заболевания печени", "Панкреатит", "Стоматологическая боль", "Инфекции", "Стресс / боль"],
+                "en": ["GI diseases", "Liver diseases", "Pancreatitis", "Dental pain", "Infections", "Stress / pain"],
+                "uz": ["OVT kasalliklari", "Jigar kasalliklari", "Pankreatit", "Tish og'rig'i", "Infeksiyalar", "Stress / og'riq"],
+            },
+            "emergency": False,
+        },
+        {
+            "title": {"ru": "🤮 Рвота", "en": "🤮 Vomiting", "uz": "🤮 Qusish"},
+            "causes": {
+                "ru": ["Гастрит / гастроэнтерит", "Инородное тело", "Отравление", "Панкреатит", "Заболевания печени", "Почечная недостаточность"],
+                "en": ["Gastritis / gastroenteritis", "Foreign body", "Poisoning", "Pancreatitis", "Liver disease", "Kidney failure"],
+                "uz": ["Gastrit / gastroenterit", "Yot jism", "Zaharlanish", "Pankreatit", "Jigar kasalliklari", "Buyrak yetishmovchiligi"],
+            },
+            "emergency": False,
+        },
+        {
+            "title": {"ru": "💩 Диарея", "en": "💩 Diarrhea", "uz": "💩 Ich ketishi"},
+            "causes": {
+                "ru": ["Паразиты", "Бактериальные / вирусные инфекции", "Пищевая непереносимость", "Воспалительные заболевания кишечника", "Интоксикация"],
+                "en": ["Parasites", "Bacterial / viral infections", "Food intolerance", "Inflammatory bowel disease", "Intoxication"],
+                "uz": ["Parazitlar", "Bakterial / virusli infeksiyalar", "Ozuqa intoleransi", "Ichak yallig'lanish kasalliklari", "Intoksikatsiya"],
+            },
+            "emergency": False,
+        },
+        {
+            "title": {"ru": "😮‍💨 Одышка / учащённое дыхание", "en": "😮‍💨 Shortness of breath / rapid breathing", "uz": "😮‍💨 Hansirash / tez nafas olish"},
+            "causes": {
+                "ru": ["Сердечная недостаточность", "Отёк лёгких", "Тепловой удар", "Плевральный выпот", "Сильная боль"],
+                "en": ["Heart failure", "Pulmonary edema", "Heat stroke", "Pleural effusion", "Severe pain"],
+                "uz": ["Yurak yetishmovchiligi", "O'pka shishi", "Issiq urishi", "Plevral suyuqlik", "Kuchli og'riq"],
+            },
+            "emergency": True,
+        },
+        {
+            "title": {"ru": "🤕 Хромота", "en": "🤕 Lameness", "uz": "🤕 Oqsoqlik"},
+            "causes": {"ru": ["Травмы", "Разрывы связок", "Артрит / остеоартроз", "Дисплазии", "Неврологические нарушения"], "en": ["Injuries", "Ligament tears", "Arthritis / osteoarthritis", "Dysplasia", "Neurological disorders"], "uz": ["Jarohatlar", "Bog'lam uzilishi", "Artrit / osteoartroz", "Displaziya", "Nevrologik buzilishlar"]},
+            "emergency": False,
+        },
+        {
+            "title": {"ru": "⚡ Судороги", "en": "⚡ Seizures", "uz": "⚡ Tutqanoq"},
+            "causes": {"ru": ["Эпилепсия", "Интоксикация", "Гипогликемия", "Печёночная энцефалопатия", "Травма ЦНС"], "en": ["Epilepsy", "Intoxication", "Hypoglycemia", "Hepatic encephalopathy", "CNS trauma"], "uz": ["Epilepsiya", "Intoksikatsiya", "Gipoglikemiya", "Jigar ensefalopatiyasi", "MNS jarohati"]},
+            "emergency": True,
+        },
+    ],
+    "cat": [
+        {"title": {"ru": "😴 Вялость / скрытность", "en": "😴 Lethargy / hiding", "uz": "😴 Loqaydlik / yashirinib yurish"}, "causes": {"ru": ["Вирусные инфекции", "Боль", "Заболевания почек", "Анемия", "Сердечные заболевания"], "en": ["Viral infections", "Pain", "Kidney disease", "Anemia", "Heart disease"], "uz": ["Virusli infeksiyalar", "Og'riq", "Buyrak kasalliklari", "Anemiya", "Yurak kasalliklari"]}, "emergency": False},
+        {"title": {"ru": "🍽️ Отказ от еды (более 24 ч — опасно)", "en": "🍽️ Food refusal (over 24h is dangerous)", "uz": "🍽️ Ovqat yemaydi (24 soatdan ortiq xavfli)"}, "causes": {"ru": ["Заболевания печени", "Стоматологические заболевания", "Панкреатит", "Инфекционные процессы", "Стресс"], "en": ["Liver disease", "Dental disease", "Pancreatitis", "Infections", "Stress"], "uz": ["Jigar kasalliklari", "Tish kasalliklari", "Pankreatit", "Infeksiyalar", "Stress"]}, "emergency": True},
+        {"title": {"ru": "🤮 Рвота", "en": "🤮 Vomiting", "uz": "🤮 Qusish"}, "causes": {"ru": ["Трихобезоары", "Гастрит", "Панкреатит", "Отравление", "Почечная недостаточность"], "en": ["Hairballs", "Gastritis", "Pancreatitis", "Poisoning", "Kidney failure"], "uz": ["Jun to'plari", "Gastrit", "Pankreatit", "Zaharlanish", "Buyrak yetishmovchiligi"]}, "emergency": False},
+        {"title": {"ru": "🚽 Часто ходит в лоток / мало мочи", "en": "🚽 Frequent litter visits / little urine", "uz": "🚽 Tez-tez lotokka boradi / siydik kam"}, "causes": {"ru": ["Идиопатический цистит", "Мочекаменная болезнь", "Стресс"], "en": ["Idiopathic cystitis", "Urolithiasis", "Stress"], "uz": ["Idiopatik sistit", "Siydik tosh kasalligi", "Stress"]}, "emergency": False},
+        {"title": {"ru": "❌ Не может помочиться", "en": "❌ Cannot urinate", "uz": "❌ Siydik chiqara olmaydi"}, "causes": {"ru": ["Обструкция уретры", "Мочекаменная болезнь"], "en": ["Urethral obstruction", "Urolithiasis"], "uz": ["Uretra obstruksiyasi", "Siydik tosh kasalligi"]}, "emergency": True},
+        {"title": {"ru": "😮‍💨 Дыхание с открытым ртом", "en": "😮‍💨 Open-mouth breathing", "uz": "😮‍💨 Og'zi ochiq nafas olish"}, "causes": {"ru": ["Сердечная недостаточность", "Отёк лёгких", "Плевральный выпот", "Сильная боль"], "en": ["Heart failure", "Pulmonary edema", "Pleural effusion", "Severe pain"], "uz": ["Yurak yetishmovchiligi", "O'pka shishi", "Plevral suyuqlik", "Kuchli og'riq"]}, "emergency": True},
+    ],
+    "cow": [
+        {"title": {"ru": "🍽️ Отказ от корма", "en": "🍽️ Feed refusal", "uz": "🍽️ Ozuqadan voz kechish"}, "causes": {"ru": ["Ацидоз рубца", "Кетоз", "Инфекции", "Послеродовые осложнения"], "en": ["Rumen acidosis", "Ketosis", "Infections", "Postpartum complications"], "uz": ["Rumen asidozi", "Ketoz", "Infeksiyalar", "Tug'ruqdan keyingi asoratlar"]}, "emergency": False},
+        {"title": {"ru": "🎈 Вздутие рубца (тимпания)", "en": "🎈 Rumen bloat (tympany)", "uz": "🎈 Qorin dam bo'lishi (timponiya)"}, "causes": {"ru": ["Нарушение кормления", "Закупорка пищевода", "Пенообразующая тимпания"], "en": ["Feeding errors", "Esophageal obstruction", "Foamy bloat"], "uz": ["Oziqlantirish xatolari", "Qizilo'ngach tiqilishi", "Ko'pikli timponiya"]}, "emergency": True},
+        {"title": {"ru": "🥛 Снижение удоя", "en": "🥛 Reduced milk yield", "uz": "🥛 Sut kamayishi"}, "causes": {"ru": ["Мастит", "Метаболические нарушения", "Стресс", "Хронические заболевания"], "en": ["Mastitis", "Metabolic disorders", "Stress", "Chronic diseases"], "uz": ["Mastit", "Metabolik buzilishlar", "Stress", "Surunkali kasalliklar"]}, "emergency": False},
+        {"title": {"ru": "🤕 Хромота", "en": "🤕 Lameness", "uz": "🤕 Oqsoqlik"}, "causes": {"ru": ["Заболевания копыт", "Пододерматиты", "Травмы", "Дефицит микроэлементов"], "en": ["Hoof diseases", "Pododermatitis", "Injuries", "Micronutrient deficiency"], "uz": ["Tuyoq kasalliklari", "Pododermatit", "Jarohatlar", "Mikroelement yetishmovchiligi"]}, "emergency": False},
+    ],
+    "sheep": [
+        {"title": {"ru": "💩 Диарея", "en": "💩 Diarrhea", "uz": "💩 Ich ketishi"}, "causes": {"ru": ["Кокцидиоз", "Гельминтозы", "Пищевые нарушения"], "en": ["Coccidiosis", "Helminths", "Feeding disorders"], "uz": ["Koktsidioz", "Gelmintoz", "Oziqlanish buzilishi"]}, "emergency": False},
+        {"title": {"ru": "🎈 Вздутие", "en": "🎈 Bloating", "uz": "🎈 Dam bo'lish"}, "causes": {"ru": ["Тимпания", "Резкая смена корма"], "en": ["Tympany", "Sudden feed change"], "uz": ["Timponiya", "Ozuqani keskin almashtirish"]}, "emergency": False},
+        {"title": {"ru": "🤕 Хромота", "en": "🤕 Lameness", "uz": "🤕 Oqsoqlik"}, "causes": {"ru": ["Гниль копыт", "Травмы", "Инфекционные процессы"], "en": ["Foot rot", "Injuries", "Infections"], "uz": ["Tuyoq chirishi", "Jarohatlar", "Infeksiyalar"]}, "emergency": False},
+    ],
+    "rodent": [
+        {"title": {"ru": "🍽️ Не ест", "en": "🍽️ Not eating", "uz": "🍽️ Ovqat yemaydi"}, "causes": {"ru": ["Заболевания зубов", "Стресс", "Инфекции", "ЖКТ-стаз"], "en": ["Dental disease", "Stress", "Infections", "GI stasis"], "uz": ["Tish kasalliklari", "Stress", "Infeksiyalar", "OVT stazi"]}, "emergency": False},
+        {"title": {"ru": "💩 Диарея", "en": "💩 Diarrhea", "uz": "💩 Ich ketishi"}, "causes": {"ru": ["Ошибки кормления", "Бактериальные инфекции", "Обезвоживание"], "en": ["Feeding errors", "Bacterial infections", "Dehydration"], "uz": ["Oziqlantirish xatolari", "Bakterial infeksiyalar", "Suvsizlanish"]}, "emergency": False},
+    ],
+    "bird": [
+        {"title": {"ru": "🪶 Нахохленность / апатия", "en": "🪶 Fluffed up / apathy", "uz": "🪶 Patini hurpaytirish / apatiya"}, "causes": {"ru": ["Инфекции", "Переохлаждение", "Стресс"], "en": ["Infections", "Hypothermia", "Stress"], "uz": ["Infeksiyalar", "Sovqotish", "Stress"]}, "emergency": False},
+        {"title": {"ru": "💩 Изменение помёта", "en": "💩 Droppings change", "uz": "💩 Najas o'zgarishi"}, "causes": {"ru": ["Заболевания ЖКТ", "Паразиты", "Печёночные заболевания"], "en": ["GI diseases", "Parasites", "Liver diseases"], "uz": ["OVT kasalliklari", "Parazitlar", "Jigar kasalliklari"]}, "emergency": False},
+        {"title": {"ru": "😮‍💨 Одышка", "en": "😮‍💨 Shortness of breath", "uz": "😮‍💨 Hansirash"}, "causes": {"ru": ["Респираторные инфекции", "Аспергиллёз", "Сердечные заболевания"], "en": ["Respiratory infections", "Aspergillosis", "Heart disease"], "uz": ["Nafas yo'li infeksiyalari", "Aspergillyoz", "Yurak kasalliklari"]}, "emergency": False},
+    ],
+    "fish": [
+        {"title": {"ru": "🐟 Лежит на дне / плавает боком", "en": "🐟 Lies at bottom / swims sideways", "uz": "🐟 Tublab yotadi / yonlab suzadi"}, "causes": {"ru": ["Нарушение параметров воды", "Поражение плавательного пузыря", "Инфекции"], "en": ["Water parameter issues", "Swim bladder disorder", "Infections"], "uz": ["Suv parametrlari buzilishi", "Suzish pufagi shikastlanishi", "Infeksiyalar"]}, "emergency": False},
+        {"title": {"ru": "⚪ Белые точки", "en": "⚪ White spots", "uz": "⚪ Oq nuqtalar"}, "causes": {"ru": ["Эктопаразитарные заболевания"], "en": ["Ectoparasitic diseases"], "uz": ["Ektoparazitar kasalliklar"]}, "emergency": False},
+    ],
+    "exotic": [
+        {"title": {"ru": "🍽️ Отказ от еды", "en": "🍽️ Food refusal", "uz": "🍽️ Ovqatdan voz kechish"}, "causes": {"ru": ["Неправильная температура", "Отсутствие УФ-B", "Стресс", "Инфекции"], "en": ["Incorrect temperature", "Lack of UV-B", "Stress", "Infections"], "uz": ["Noto'g'ri harorat", "UV-B yo'qligi", "Stress", "Infeksiyalar"]}, "emergency": False},
+        {"title": {"ru": "🦴 Мягкие кости / судороги", "en": "🦴 Soft bones / seizures", "uz": "🦴 Yumshoq suyaklar / tutqanoq"}, "causes": {"ru": ["Дефицит кальция", "Метаболические болезни костей"], "en": ["Calcium deficiency", "Metabolic bone disease"], "uz": ["Kalsiy yetishmovchiligi", "Metabolik suyak kasalligi"]}, "emergency": False},
+    ],
+}
+
