@@ -49,7 +49,7 @@ async def back_to_main_menu(callback: types.CallbackQuery):
     user_id = callback.from_user.id
     await safe_edit_message(
         callback.message,
-        get_text(user_id, "main_menu"),
+        "&#8203;",
         reply_markup=get_main_menu(user_id),
     )
     await callback.answer()
