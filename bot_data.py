@@ -28,9 +28,9 @@ TEXTS = {
         "uz": "🤔 Qiziqarli faktlar"
     },
     "feeding_guide": {
-        "ru": "🍖 Кормление питомца",
-        "en": "🍖 Feeding Guide",
-        "uz": "🍖 Hayvonni oziqlantirish"
+        "ru": "🦴 Кормление питомца",
+        "en": "🦴 Feeding Guide",
+        "uz": "🦴 Hayvonni oziqlantirish"
     },
     "symptoms": {
         "ru": "🩺 Проверка симптомов",
@@ -56,6 +56,16 @@ TEXTS = {
         "ru": "🏠 Приюты",
         "en": "🏠 Shelters",
         "uz": "🏠 Boshpana uylari"
+    },
+    "clinics_shelters": {
+        "ru": "🏥 Клиники + 🏠 Приюты",
+        "en": "🏥 Clinics + 🏠 Shelters",
+        "uz": "🏥 Klinikalar + 🏠 Boshpanalar"
+    },
+    "pharmacies_pet_shop": {
+        "ru": "💊 Аптеки + 🛒 Зоомагазин",
+        "en": "💊 Pharmacies + 🛒 Pet Shop",
+        "uz": "💊 Dorixonalar + 🛒 Pet shop"
     },
     "vet_chat": {
         "ru": "💬 Чат с ветер.",
@@ -102,39 +112,19 @@ TEXTS = {
 
     # Профиль
     "profile_section": {
-        "ru": "👤 <b>Мой профиль</b>\n\nВыберите тип профиля для создания:",
-        "en": "👤 <b>My Profile</b>\n\nChoose profile type to create:",
-        "uz": "👤 <b>Mening profilingiz</b>\n\nYaratish uchun profil turini tanlang:"
+        "ru": "👤 <b>Мой профиль</b>\n\nВыберите раздел:",
+        "en": "👤 <b>My Profile</b>\n\nChoose a section:",
+        "uz": "👤 <b>Mening profilim</b>\n\nBo'limni tanlang:"
     },
     "create_profile": {
-        "ru": "✏️ Создать профиль",
-        "en": "✏️ Create Profile",
-        "uz": "✏️ Profil yaratish"
-    },
-    "create_vet_profile": {
-        "ru": "👨‍⚕️ Создать профиль ветеринара",
-        "en": "👨‍⚕️ Create Vet Profile",
-        "uz": "👨‍⚕️ Veterinar profilini yaratish"
+        "ru": "✍️ Создать профиль",
+        "en": "✍️ Create Profile",
+        "uz": "✍️ Profil yaratish"
     },
     "view_profile": {
-        "ru": "👁️ Просмотреть профиль",
+        "ru": "👁️ Посмотреть профиль",
         "en": "👁️ View Profile",
         "uz": "👁️ Profilni ko'rish"
-    },
-    "view_vet_profile": {
-        "ru": "👨‍⚕️ Просмотреть профиль ветеринара",
-        "en": "👨‍⚕️ View Vet Profile",
-        "uz": "👨‍⚕️ Veterinar profilini ko'rish"
-    },
-    "edit_profile": {
-        "ru": "🔄 Изменить профиль",
-        "en": "🔄 Edit Profile",
-        "uz": "🔄 Profilni o'zgartirish"
-    },
-    "clear_profile": {
-        "ru": "🗑️ Очистить профиль",
-        "en": "🗑️ Clear Profile",
-        "uz": "🗑️ Profilni tozalash"
     },
     "profile_empty": {
         "ru": "❌ Профиль не заполнен!\n\nНажмите 'Создать профиль'",
@@ -399,19 +389,90 @@ SHELTERS_DATA = {
     ]
 }
 
-# Интересные факты о животных
-ANIMAL_FACTS = [
-    "🐕 Собаки понимают до 250 слов и жестов, считают до пяти и могут решать простейшие математические задачи.",
-    "🐱 Кошки спят около 70% своей жизни.",
-    "🐰 Кролики могут видеть позади себя, не поворачивая головы.",
-    "🐦 Попугаи могут жить более 80 лет.",
-    "🐠 Золотые рыбки имеют память около 3 месяцев.",
-    "🦜 Некоторые виды попугаев могут имитировать человеческую речь почти идеально.",
-    "🐹 Хомяки могут пробежать до 8 км за ночь в своем колесе.",
-    "🐢 Черепахи могут жить более 100 лет.",
-    "🦎 Некоторые ящерицы могут отбрасывать хвост при опасности.",
-    "🐭 Мыши могут смеяться, когда их щекочут."
-]
+# Интересные факты о животных (RU/EN/UZ)
+ANIMAL_FACTS = {
+    "ru": [
+        "🐕 Собаки понимают до 250 слов и жестов.",
+        "🐱 Кошки спят около 70% своей жизни.",
+        "🐰 Кролики могут видеть позади себя, не поворачивая головы.",
+        "🐦 Попугаи могут жить более 80 лет.",
+        "🐠 Золотые рыбки способны запоминать информацию на месяцы.",
+        "🦜 Некоторые попугаи умеют очень точно копировать человеческую речь.",
+        "🐹 Хомяк за ночь может пробежать несколько километров в колесе.",
+        "🐢 Некоторые черепахи живут более 100 лет.",
+        "🦎 Ряд ящериц может сбрасывать хвост при опасности.",
+        "🐭 Мыши издают ультразвуковые сигналы, похожие на смех.",
+        "🐶 Отпечаток носа у собаки уникален, как отпечаток пальца у человека.",
+        "🐱 У кошек около 30 мышц управляют движением ушей.",
+        "🦉 Совы могут поворачивать голову примерно на 270 градусов.",
+        "🐙 У осьминога три сердца.",
+        "🐝 Пчёлы сообщают о местонахождении еды с помощью «танца».",
+        "🦒 Язык жирафа может достигать примерно 45 см.",
+        "🐬 Дельфины узнают себя в зеркале.",
+        "🦈 Акулы существовали раньше динозавров.",
+        "🐧 Императорские пингвины могут нырять глубже 500 метров.",
+        "🦋 Бабочки чувствуют вкус лапками.",
+        "🐘 Слоны узнают друг друга по голосу на больших расстояниях.",
+        "🐸 Некоторые лягушки могут замерзать и потом «оживать».",
+        "🦦 Выдры держатся за лапы во сне, чтобы не уплыть друг от друга.",
+        "🐎 Лошади могут спать как стоя, так и лёжа.",
+        "🦔 Ежи плохо видят, но отлично чувствуют запахи.",
+    ],
+    "en": [
+        "🐕 Dogs can understand up to 250 words and gestures.",
+        "🐱 Cats sleep about 70% of their lives.",
+        "🐰 Rabbits can see behind themselves without turning their heads.",
+        "🐦 Parrots can live more than 80 years.",
+        "🐠 Goldfish can remember information for months.",
+        "🦜 Some parrots can mimic human speech very accurately.",
+        "🐹 A hamster can run several kilometers in a wheel overnight.",
+        "🐢 Some turtles can live over 100 years.",
+        "🦎 Many lizards can drop their tails when threatened.",
+        "🐭 Mice make ultrasonic sounds that resemble laughter.",
+        "🐶 A dog's nose print is unique, like a human fingerprint.",
+        "🐱 Cats use around 30 muscles to move their ears.",
+        "🦉 Owls can rotate their heads about 270 degrees.",
+        "🐙 An octopus has three hearts.",
+        "🐝 Bees communicate food locations through a dance.",
+        "🦒 A giraffe's tongue can be about 45 cm long.",
+        "🐬 Dolphins can recognize themselves in mirrors.",
+        "🦈 Sharks existed before dinosaurs.",
+        "🐧 Emperor penguins can dive deeper than 500 meters.",
+        "🦋 Butterflies taste with their feet.",
+        "🐘 Elephants can recognize each other by voice over long distances.",
+        "🐸 Some frogs can freeze and later thaw back to life.",
+        "🦦 Otters hold hands while sleeping so they do not drift apart.",
+        "🐎 Horses can sleep standing up and lying down.",
+        "🦔 Hedgehogs have poor eyesight but a strong sense of smell.",
+    ],
+    "uz": [
+        "🐕 Itlar 250 tagacha so'z va imo-ishorani tushunishi mumkin.",
+        "🐱 Mushuklar hayotining taxminan 70% qismini uyquda o'tkazadi.",
+        "🐰 Quyonlar boshini burmasdan ham orqa tomonni ko'ra oladi.",
+        "🐦 To'tiqushlar 80 yildan ortiq yashashi mumkin.",
+        "🐠 Oltin baliqlar ma'lumotni oylar davomida eslab qolishi mumkin.",
+        "🦜 Ba'zi to'tiqushlar inson nutqini juda aniq taqlid qiladi.",
+        "🐹 Xomyak bir kechada g'ildirakda bir necha km yugurishi mumkin.",
+        "🐢 Ba'zi toshbaqalar 100 yildan ortiq yashaydi.",
+        "🦎 Ko'plab kaltakesaklar xavf paytida dumini tashlab yubora oladi.",
+        "🐭 Sichqonlar kulgiga o'xshash ultratovush signallar chiqaradi.",
+        "🐶 It burni izi inson barmoq izi kabi noyob bo'ladi.",
+        "🐱 Mushuk quloqlarini boshqarish uchun taxminan 30 ta mushakdan foydalanadi.",
+        "🦉 Boyqushlar boshini taxminan 270 gradusga burishi mumkin.",
+        "🐙 Sakkizoyoqda uchta yurak bor.",
+        "🐝 Asalarilar ozuqa joyini raqs orqali ko'rsatadi.",
+        "🦒 Jirafaning tili taxminan 45 sm bo'lishi mumkin.",
+        "🐬 Delfinlar oynada o'zini taniy oladi.",
+        "🦈 Akulalar dinozavrlardan ham oldin mavjud bo'lgan.",
+        "🐧 Imperator pingvinlari 500 metrdan chuqur sho'ng'iy oladi.",
+        "🦋 Kapalaklar ta'mni oyoqlari bilan sezadi.",
+        "🐘 Fillar uzoq masofadan bir-birini ovozi orqali taniydi.",
+        "🐸 Ba'zi qurbaqalar muzlab, keyin yana tirik holatga qayta oladi.",
+        "🦦 Suv suvsarlari uxlaganda bir-birining panjasini ushlab yotadi.",
+        "🐎 Otlar tik turgan holda ham, yotgan holda ham uxlashi mumkin.",
+        "🦔 Tipratikanlarning ko'rishi sust, lekin hid bilishi kuchli.",
+    ],
+}
 
 # Информация о кормлении животных
 FEEDING_INFO = {

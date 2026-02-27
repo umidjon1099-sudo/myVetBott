@@ -2,6 +2,7 @@
 from . import (
     ads_button,
     appointment_button,
+    combined_menu_button,
     clinics_button,
     clinics_menu_button,
     feeding_button,
@@ -21,6 +22,7 @@ from . import (
 __all__ = [
     "ads_button",
     "appointment_button",
+    "combined_menu_button",
     "clinics_button",
     "clinics_menu_button",
     "feeding_button",

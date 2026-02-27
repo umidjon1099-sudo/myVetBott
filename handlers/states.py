@@ -7,8 +7,11 @@ class ProfileStates(StatesGroup):
     waiting_for_owner_name = State()
     waiting_for_owner_phone = State()
     waiting_for_city = State()
+    waiting_for_city_manual = State()
     waiting_for_pet_name = State()
     waiting_for_pet_type = State()
+    waiting_for_pet_type_manual = State()
+    waiting_for_pet_photo = State()
     waiting_for_pet_breed = State()
     waiting_for_pet_age = State()
     waiting_for_pet_weight = State()
@@ -22,12 +25,15 @@ class VetProfileStates(StatesGroup):
     waiting_for_vet_name = State()
     waiting_for_vet_phone = State()
     waiting_for_vet_city = State()
+    waiting_for_vet_city_manual = State()
     waiting_for_vet_specialization = State()
+    waiting_for_vet_specialization_manual = State()
     waiting_for_vet_experience = State()
     waiting_for_vet_education = State()
     waiting_for_vet_telegram = State()
     waiting_for_vet_consultation_price = State()
     waiting_for_vet_info = State()
+    waiting_for_vet_photo = State()
 
 
 class ReminderStates(StatesGroup):

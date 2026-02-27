@@ -53,7 +53,6 @@ def create_reminder_keyboard(user_id: int = None):
         [InlineKeyboardButton(text=_text(user_id, "one_time"), callback_data="reminder_one_time")],
         [InlineKeyboardButton(text=_text(user_id, "daily"), callback_data="reminder_daily")],
         [InlineKeyboardButton(text=_text(user_id, "weekly"), callback_data="reminder_weekly")],
-        [InlineKeyboardButton(text=_text(user_id, "custom"), callback_data="reminder_custom")],
         [InlineKeyboardButton(text=_kbd_text(user_id, "back"), callback_data="menu_reminders")],
     ])
 
@@ -81,14 +80,14 @@ def create_cities_keyboard(user_id: int = None):
 
 def create_animal_type_keyboard(user_id: int = None):
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_dog"), callback_data="animal_dog")],
-        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_cat"), callback_data="animal_cat")],
-        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_cow"), callback_data="animal_cow")],
-        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_sheep"), callback_data="animal_sheep")],
-        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_rodent"), callback_data="animal_rodent")],
-        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_bird"), callback_data="animal_bird")],
-        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_fish"), callback_data="animal_fish")],
-        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_exotic"), callback_data="animal_exotic")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_dog"), callback_data="sym_animal_dog")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_cat"), callback_data="sym_animal_cat")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_cow"), callback_data="sym_animal_cow")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_sheep"), callback_data="sym_animal_sheep")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_rodent"), callback_data="sym_animal_rodent")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_bird"), callback_data="sym_animal_bird")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_fish"), callback_data="sym_animal_fish")],
+        [InlineKeyboardButton(text=_kbd_text(user_id, "animal_exotic"), callback_data="sym_animal_exotic")],
         [InlineKeyboardButton(text=_kbd_text(user_id, "back"), callback_data="back_to_menu")],
     ])
 
@@ -126,17 +125,26 @@ def create_language_keyboard(user_id: int = None):
 def get_main_menu(user_id: int = None):
     menu_buttons = [
         [InlineKeyboardButton(text=_text(user_id, "profile_big"), callback_data="menu_profile")],
-        [InlineKeyboardButton(text=_text(user_id, "clinics"), callback_data="menu_clinics")],
-        [InlineKeyboardButton(text=_text(user_id, "pharmacies"), callback_data="menu_pharmacies")],
-        [InlineKeyboardButton(text=_text(user_id, "shelters"), callback_data="menu_shelters")],
-        [InlineKeyboardButton(text=_text(user_id, "pet_shop"), callback_data="menu_pet_shop")],
-        [InlineKeyboardButton(text=_text(user_id, "symptoms"), callback_data="menu_symptoms")],
-        [InlineKeyboardButton(text=_text(user_id, "feeding_guide"), callback_data="menu_feeding")],
-        [InlineKeyboardButton(text=_text(user_id, "reminders"), callback_data="menu_reminders")],
-        [InlineKeyboardButton(text=_text(user_id, "ads"), callback_data="menu_ads")],
-        [InlineKeyboardButton(text=_text(user_id, "news"), callback_data="menu_news")],
-        [InlineKeyboardButton(text=_text(user_id, "pet_facts"), callback_data="menu_facts")],
-        [InlineKeyboardButton(text=_text(user_id, "language"), callback_data="menu_language")],
+        [
+            InlineKeyboardButton(text=_text(user_id, "clinics_shelters"), callback_data="menu_clinics_shelters"),
+            InlineKeyboardButton(text=_text(user_id, "pharmacies_pet_shop"), callback_data="menu_pharmacies_pet_shop"),
+        ],
+        [
+            InlineKeyboardButton(text=_text(user_id, "symptoms"), callback_data="menu_symptoms"),
+            InlineKeyboardButton(text=_text(user_id, "feeding_guide"), callback_data="menu_feeding"),
+        ],
+        [
+            InlineKeyboardButton(text=_text(user_id, "vet_chat"), callback_data="menu_vet_chat"),
+            InlineKeyboardButton(text=_text(user_id, "reminders"), callback_data="menu_reminders"),
+        ],
+        [
+            InlineKeyboardButton(text=_text(user_id, "ads"), callback_data="menu_ads"),
+            InlineKeyboardButton(text=_text(user_id, "news"), callback_data="menu_news"),
+        ],
+        [
+            InlineKeyboardButton(text=_text(user_id, "pet_facts"), callback_data="menu_facts"),
+            InlineKeyboardButton(text=_text(user_id, "language"), callback_data="menu_language"),
+        ],
     ]
 
     return InlineKeyboardMarkup(inline_keyboard=menu_buttons)
@@ -150,14 +158,8 @@ def get_back_to_menu_button(user_id: int = None):
 
 def get_profile_menu(user_id: int = None):
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=_text(user_id, "create_profile"), callback_data="create_profile")],
-        [InlineKeyboardButton(text=_text(user_id, "create_vet_profile"), callback_data="create_vet_profile")],
-        [InlineKeyboardButton(text=_text(user_id, "view_profile"), callback_data="profile_view")],
-        [InlineKeyboardButton(text=_text(user_id, "view_vet_profile"), callback_data="vet_profile_view")],
-        [InlineKeyboardButton(text=_text(user_id, "appointment"), callback_data="menu_appointment")],
-        [InlineKeyboardButton(text=_text(user_id, "history"), callback_data="menu_history")],
-        [InlineKeyboardButton(text=_text(user_id, "edit_profile"), callback_data="edit_profile")],
-        [InlineKeyboardButton(text=_text(user_id, "clear_profile"), callback_data="profile_clear")],
+        [InlineKeyboardButton(text=_text(user_id, "create_profile"), callback_data="profile_create_menu")],
+        [InlineKeyboardButton(text=_text(user_id, "view_profile"), callback_data="profile_view_menu")],
         [InlineKeyboardButton(text=_text(user_id, "back_to_menu"), callback_data="back_to_menu")],
     ])
 

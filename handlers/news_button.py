@@ -6,7 +6,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from bot_config import dp
 from bot_data import ANIMAL_FACTS
-from handlers.common import get_text, safe_edit_message, tr
+from handlers.common import get_text, get_user_language, safe_edit_message, tr
 
 LOCAL = {
     "news_1": {
@@ -60,7 +60,9 @@ async def news_menu(callback: types.CallbackQuery):
 @dp.callback_query(F.data == "menu_facts")
 async def facts_menu(callback: types.CallbackQuery):
     user_id = callback.from_user.id
-    random_fact = random.choice(ANIMAL_FACTS)
+    lang = get_user_language(user_id)
+    facts = ANIMAL_FACTS.get(lang, ANIMAL_FACTS["ru"])
+    random_fact = random.choice(facts)
 
     text = get_text(user_id, "facts_section") + f"\n\n{tr(user_id, LOCAL['random_title'])}\n\n{random_fact}"
 

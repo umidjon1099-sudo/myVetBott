@@ -17,6 +17,7 @@ from handlers.common import add_to_history, get_text, safe_edit_message, tr
 
 LOCAL = {
     "signup_history": {"ru": "👋 Регистрация в боте", "en": "👋 Registered in bot", "uz": "👋 Botda ro'yxatdan o'tdi"},
+    "menu_hint": {"ru": "⁠", "en": "⁠", "uz": "⁠"},
 }
 
 
@@ -49,7 +50,7 @@ async def back_to_main_menu(callback: types.CallbackQuery):
     user_id = callback.from_user.id
     await safe_edit_message(
         callback.message,
-        "&#8203;",
+        tr(user_id, LOCAL["menu_hint"]),
         reply_markup=get_main_menu(user_id),
     )
     await callback.answer()
