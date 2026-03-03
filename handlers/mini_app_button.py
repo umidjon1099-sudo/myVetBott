@@ -1,4 +1,6 @@
 """Обработчик открытия Mini App из меню бота."""
+import os
+
 from aiogram import F, types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
@@ -19,7 +21,8 @@ LOCAL = {
 @dp.callback_query(F.data == "menu_mini_app")
 async def mini_app_menu(callback: types.CallbackQuery):
     user_id = callback.from_user.id
-    web_app = WebAppInfo(url="https://example.com/pet-helper-app")
+    web_app_url = os.getenv("WEB_APP_URL", "https://example.com/webapp")
+    web_app = WebAppInfo(url=web_app_url)
 
     await callback.message.answer(
         tr(user_id, LOCAL["title"]),

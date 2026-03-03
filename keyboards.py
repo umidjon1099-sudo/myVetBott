@@ -145,6 +145,10 @@ def get_main_menu(user_id: int = None):
             InlineKeyboardButton(text=_text(user_id, "pet_facts"), callback_data="menu_facts"),
             InlineKeyboardButton(text=_text(user_id, "language"), callback_data="menu_language"),
         ],
+        [
+            InlineKeyboardButton(text=_text(user_id, "history"), callback_data="menu_history"),
+            InlineKeyboardButton(text=_text(user_id, "mini_app"), callback_data="menu_mini_app"),
+        ],
     ]
 
     return InlineKeyboardMarkup(inline_keyboard=menu_buttons)
